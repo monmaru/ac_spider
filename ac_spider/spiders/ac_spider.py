@@ -18,10 +18,6 @@ class AcSpider(scrapy.Spider):
         'http://qiita.com/advent-calendar/2016/categories/services',
     )
 
-    custom_settings = {
-        "DOWNLOAD_DELAY": 3.0,
-    }
-
     def parse(self, response):
         for href in response.css('.adventCalendarList .adventCalendarList_calendarTitle > a::attr(href)'):
             full_url = response.urljoin(href.extract())
